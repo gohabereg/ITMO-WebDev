@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+}
+
+.header {
+    height: 100px;
+    width: 100%;
+    background-color: #bbb;
+}
+
+.section {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    min-height: calc(100vh - 200px);
+}
+
+.aside {
+    flex-basis: 20%;
+    flex-grow: 2;
+    background-color: #ddd;
+}
+
+.article {
+    flex-grow: 4;
+    flex-basis: 80%;
+    padding: 10px 15px;
+    background-color: #eee;
+}
+
+.footer {
+    height: 100px;
+    width: 100%;
+    background-color: #bbb;
+}
+
+@media (max-width: 800px) {
+    .section {
+        flex-direction: column;
+    }
+}
