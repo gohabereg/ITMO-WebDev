@@ -1,0 +1,26 @@
+header {
+    width: 100%;
+    padding: 10px 0;
+}
+
+#main {
+    height: 100vh;
+    background-image: url('assets/wp.jpg');
+    background-size: cover;
+}
+
+.cta-button {
+    bottom: 100px;
+    right: 100px;
+
+    height: 80px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.name {
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+    color: #fff;
+}
