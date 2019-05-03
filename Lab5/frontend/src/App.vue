@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <List ref="list" class="column" />
-    <Editor class="column" v-on:change="onChange" v-on:save="onSave"/>
+    <List ref="list" class="column" v-on:selected="onSelected" />
+    <Editor ref="editor" class="column" v-on:change="onChange" v-on:saved="onSave" v-on:removed="onRemove"/>
     <Preview class="column" v-bind:markdown="markdown" />
   </div>
 </template>
@@ -27,8 +27,15 @@ export default {
     onChange(value) {
       this.markdown = value;
     },
-    onSave() {
-    this.$refs.list.fetchNotes();
+    onSave(id) {
+      this.$refs.list.fetchNotes(id);
+    },
+    onRemove() {
+      this.$refs.list.fetchNotes();
+      this.$refs.editor.select(null);
+    },
+    onSelected(id) {
+      this.$refs.editor.select(id);
     }
   }
 }
