@@ -2,52 +2,47 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+use yii\helpers\Url;
+
+$this->title = 'Blog';
 ?>
-<div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<script>
+    async function remove(id) {
+        try {
+            await fetch(`<?=Url::toRoute(['page/remove']);?>&id=${id}`);
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+            const el = document.getElementById(id);
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+            el.remove();
+        } catch (e) {} 
+    }
+</script>
+
+<h1>Articles: </h1>
+
+<?php foreach($pages as $page): ?>
+    <div id="<?=$page->id?>" class="option">
+        <a href="<?=Url::toRoute(['page/show', 'id' => $page->id])?>"> 
+            <h3><?=$page->title;?></h3>
+        </a>
+
+        <button class="delete-btn" onClick="remove(<?=$page->id?>)">Delete</button>
     </div>
+<?php endforeach ?>
 
-    <div class="body-content">
+<style>
+    .option {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        border-width: 1px 0 1px;
+        border-color: #000;
+        border-style: solid; 
+    }
 
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>
-</div>
+    .delete-btn {
+        margin-left: auto;
+        height: 25px;
+    }
+</style>

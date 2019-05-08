@@ -1,7 +1,7 @@
 class CoverGenerator {
   constructor() {
-    this.height = 800;
-    this.width = 800;
+    this.height = 600;
+    this.width = 600;
     this.fontSize = 30;
     this.lineHeight = 1.5 * this.fontSize;
 
@@ -12,6 +12,8 @@ class CoverGenerator {
     this.context.fillStyle = '#fff';
 
     document.body.appendChild(this.canvas);
+
+    this.createButtons();
 
     this.generate();
   }
@@ -49,8 +51,6 @@ class CoverGenerator {
 
     let currentLine = '';
 
-    console.log(quote);
-
     const lines = words.reduce((result, word, i) => {
 
       const {width} = this.context.measureText(`${currentLine} ${word}`);
@@ -65,8 +65,6 @@ class CoverGenerator {
 
       return result;
     }, []);
-
-    console.log(lines);
 
     lines.forEach((line, i) => {
 
@@ -85,6 +83,8 @@ class CoverGenerator {
 
     for (let i = 0; i < 4; i++) {
       const image = new Image();
+
+      image.crossOrigin = 'anonymous';
 
       promises.push(new Promise(resolve => {
         image.addEventListener('load', () => {
@@ -120,6 +120,27 @@ class CoverGenerator {
     });
   }
 
+  createButtons() {
+    const generate = this.createElement('button', undefined, {innerHTML: 'Generate', type: 'button'});
+
+    generate.addEventListener('click', () => {
+      this.generate();
+    });
+
+    const downloadLink = this.createElement('a', undefined, {download: 'quote'});
+    const downloadBtn = this.createElement('button', undefined, {innerHTML: 'Download', type: 'button'});
+
+    downloadLink.appendChild(downloadBtn);
+
+    downloadBtn.addEventListener('click', () => {
+      const image = this.canvas.toDataURL('image/jpg');
+
+      downloadLink.setAttribute('href', image);
+    });
+
+    document.body.append(generate, downloadLink);
+  }
+
   createElement(name, classList, attributes) {
     const element = document.createElement(name);
 
@@ -135,7 +156,7 @@ class CoverGenerator {
       Object
         .entries(attributes)
         .forEach(([name, value]) => {
-          element.setAttribute(name, value);
+          element[name] = value;
         })
     }
 
@@ -145,4 +166,4 @@ class CoverGenerator {
 
 window.addEventListener('DOMContentLoaded', () => {
   new CoverGenerator();
-})
+});
