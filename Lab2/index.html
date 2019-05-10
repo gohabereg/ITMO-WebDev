@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <header class="position-fixed bg-light">
+    <header class="position-fixed bg-light border-bottom" style="z-index: 3;">
         <nav class="nav">
             <a class="nav-link" href="#main">Главная</a>
             <a class="nav-link" href="#description">О нас</a>
             <a class="nav-link" href="#cats">Котики</a>
-            <a class="nav-link" href="#prices">Цены</a>
             <a class="nav-link" href="#feedback">Связаться с нами</a>
         </nav>
     </header>
@@ -22,27 +21,66 @@
             <h1 class="name__title display-1">Котик на час</h1>
             <h2 class="name__slogan ">Спаси себя от одиночества</h2>
         </div>
-        <button class="btn btn-outline-light btn-lg position-absolute cta-button">Погладить котика</button>
+        <a href="#feedback"><button class="btn btn-outline-light btn-lg position-absolute cta-button">Погладить котика</button></a>
     </section>
 
-    <section class="" id="description">
-        Котик на час
+    <section class="container py-3" id="description">
+        <div class="lead my-5" style="font-size: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt elementum pretium. Suspendisse at ultricies nibh. Vivamus id est dolor. Praesent ligula ante, iaculis sed felis in, efficitur scelerisque sapien. Praesent facilisis a lectus a ullamcorper. Curabitur eget sagittis sapien. Nullam est leo, iaculis id finibus eget, congue ut lectus. Aliquam erat volutpat. Maecenas metus sem, vestibulum quis molestie non, interdum at libero.</div>
+        <blockquote class="blockquote card mx-auto text-center" style="width: 500px;">
+            <div class="card-body">Без кота и жизнь не та.<br />Без кота  дом сирота.</div>
+        </blockquote>
     </section>
 
-    <section class="" id="cats">
-        Всех посмотреть
+    <section class="bg-light" id="cats">
+        <div class="container py-3">
+            <h2 class="mb-4">Котики</h2> 
+            <div class="row d-flex align-items-stretch">
+                <figure class="d-flex flex-column align-items-center figure col-sm">
+                    <img class="cat-image figure-img img-fluid" src="assets/cat1.jpg">
+                    <div>Джон</div>
+                </figure>
+                
+                <figure class="d-flex flex-column align-items-center figure col-sm">
+                    <img class="cat-image figure-img img-fluid" src="assets/cat2.jpg">
+                    <div>Джейн</div>
+                </figure>
+                    
+                <figure class="d-flex flex-column align-items-center figure-img col-sm" class="figure">
+                    <img class="cat-image figure-img img-fluid" src="assets/cat3.jpg">
+                    <div>До</div>
+                </figure>
+            </div>
+        </div>
     </section>
 
-    <section class="" id="prices">
-        Стоимость
+    <section class="container py-3" id="long-description">
+        <h3 class="mb-3">Подробности</h3>
+        
+        <div class="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada velit odio, at finibus ipsum eleifend in. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque posuere, justo quis congue vulputate, lectus turpis gravida dolor, a hendrerit purus eros et ligula. Quisque consectetur velit eu lectus convallis, sed elementum diam pretium. Vestibulum ornare luctus pellentesque. Aenean ut nibh sollicitudin, auctor neque quis, condimentum lacus. Morbi ultricies, enim sit amet feugiat pharetra, sem felis porttitor turpis, ut vehicula orci metus eget quam.</div>
+
+        <div class="my-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi semper, libero eu eleifend sollicitudin, ex massa maximus metus, id pharetra nisl tortor eu diam. Praesent suscipit in elit ut vestibulum. Suspendisse nec tempus velit. Morbi sed tortor ex. Quisque ornare bibendum libero, non tincidunt magna aliquam vel. Aenean eu diam vitae ligula fermentum gravida eu nec urna. Vivamus porttitor nec eros sed pellentesque.</div>
     </section>
 
-    <section class="" id="feedback">
-        Связаться с нами
+    <section class="py-3 bg-light" id="feedback">
+        <div class="container">
+            <h3 class="mb-3">Связаться с нами</h3>
+            <div class="mb-3">Оставьте ваши контактные данные, и мы свяжемся с вами.</div>
+            <form class="mx-auto" style="width: 400px;">
+                <div class="form-group">
+                    <label for="name">Ваше имя</label>
+                    <input type="text" class="form-control" id="name" placeholder="Имя">
+                </div>
+                <div class="form-group">
+                    <label for="email">Ваш email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Введите email">
+                </div>
+                <div class="form-group">
+                    <label for="comment">Комментарий</label>
+                    <textarea type="comment" class="form-control" id="comment" placeholder="Комментарий"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </form>
+        </div>
     </section>
-
-    <footer class="">
-        Контакты
-    </footer>
 </body>
 </html>
